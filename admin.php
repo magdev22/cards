@@ -38,22 +38,44 @@
     </style>
     <form action="" method="post" name="form">
 
-        <input name="name" type="text" placeholder="Ваше имя" />
+        <input name="title" type="text" placeholder="названиее" />
         <br>
         <!-- Поле ввода почты  -->
-        <input name="email" type="text" placeholder="Ваша почта" />
+        <input name="descr" type="text" placeholder="описание" />
         <br>
         <!-- Поле ввода для темы сообщения -->
-        <input size="30" name="header" type="text" placeholder="Тема" />
+        <input  name="price" type="namber" placeholder="цена" />
         <br>
-        <!-- Текстовое поле для самого сообщения -->
-        <textarea cols="32" name="message" rows="5"> Текст сообщения
-  </textarea>
+        <input  name="img" type="text" placeholder="картинка" />
         <br>
         <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
         <input type="submit" value="Отправить" />
     </form>
 </body>
+
+<?php
+ error_reporting(0);
+    include('./db.php');
+    $title = $_POST ['title'];
+    $descr = $_POST ['descr'];
+    $price = $_POST ['price'];
+    $img = $_POST ['img'];
+
+$sql = "INSERT INTO products (title, descr, price, img) values ('$title' ,'$descr', $price, '$img')";
+    
+if ($mysqli->query($sql) === TRUE) {
+    echo "inserted successfully";
+} else {
+    echo "Error: " . $mysqli->error;
+}
+    
+    
+    
+    ?>
+
+<?php  
+
+?>
 
 </html>
 

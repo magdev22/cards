@@ -73,25 +73,26 @@
 
 
     <h2>Card</h2>
-  
+   
+<div class="cards">X
 <?php  
-  include('db.php');
+include('db.php');
 $sql = "SELECT * FROM products";
 $products = $mysqli->query($sql);
 
 foreach($products as $product){
 ?>
-
         <div class="card">
-            <img class="img" src="<?php echo $product['img']?>" alt="Avatar">
+            <img class="img" src="<?php   echo $product ['img']?>" alt="Avatar">
             <div class="container">
-                <h4><b> <?php echo $product['img']?></b></h4>
-                <p><?php echo $product['descr']?></p>
+                <h4><b> <?php echo  $product ['title']?></b></h4>
+                <p><?php echo $product ['descr']?></p>
             </div>
         </div>
-    </div>
+    
  <?php }
 ?>
+</div> 
 </body>
 
 </html>

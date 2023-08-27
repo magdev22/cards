@@ -64,6 +64,7 @@
 </head>
 
 <body>
+
     <ul>
         <li><a class="active" href="#home">Home</a></li>
         <li><a href="#news">Админка</a></li>
@@ -72,76 +73,25 @@
 
 
     <h2>Card</h2>
-    <div class="cards">
+  
+<?php  
+  include('db.php');
+$sql = "SELECT * FROM products";
+$products = $mysqli->query($sql);
+
+foreach($products as $product){
+?>
+
         <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
+            <img class="img" src="<?php echo $product['img']?>" alt="Avatar">
             <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="img" src="1.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
+                <h4><b> <?php echo $product['img']?></b></h4>
+                <p><?php echo $product['descr']?></p>
             </div>
         </div>
     </div>
-
-    <?php
-    include('./db.php');
-    $title = $_POST ['title'];
-    $descr = $_POST ['descr'];
-    $price = $_POST ['price'];
-    $img = $_POST ['img'];
-
-$sql = "INSERT INTO products (title, descr, price, img) values ('$title' ,'$descr', $price, '$img')";
-    
-if ($mysqli->query($sql) === TRUE) {
-    echo "inserted successfully";
-} else {
-    echo "Error: " . $mysqli->error;
-}
-    
-    
-    
-    ?>
+ <?php }
+?>
 </body>
 
 </html>

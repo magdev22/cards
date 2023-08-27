@@ -54,12 +54,13 @@
 </body>
 
 <?php
- error_reporting(0);
+//  error_reporting(0);
     include('./db.php');
     $title = $_POST ['title'];
     $descr = $_POST ['descr'];
     $price = $_POST ['price'];
     $img = $_POST ['img'];
+
 
 $sql = "INSERT INTO products (title, descr, price, img) values ('$title' ,'$descr', $price, '$img')";
     
@@ -68,8 +69,6 @@ if ($mysqli->query($sql) === TRUE) {
 } else {
     echo "Error: " . $mysqli->error;
 }
-    
-    
     
     ?>
 

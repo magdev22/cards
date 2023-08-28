@@ -42,7 +42,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             height: 400px;
-            width: 200px;
+            width: 270px;
             margin-left: 10px;
 
 
@@ -67,14 +67,14 @@
 
     <ul>
         <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">Админка</a></li>
+        <li><a href="/admin.php">Админка</a></li>
 
     </ul>
 
 
     <h2>Card</h2>
    
-<div class="cards">X
+<div class="cards">
 <?php  
 include('db.php');
 $sql = "SELECT * FROM products";
@@ -85,8 +85,11 @@ foreach($products as $product){
         <div class="card">
             <img class="img" src="<?php   echo $product ['img']?>" alt="Avatar">
             <div class="container">
-                <h4><b> <?php echo  $product ['title']?></b></h4>
-                <p><?php echo $product ['descr']?></p>
+                <h4><b>Название  <?php echo  $product ['title']?></b></h4>
+                <p>Описание <?php echo $product ['descr']?></p>
+                <p>Цена <?php echo $product ['price']?></p>
+                 <a href="/update.php">Изменить</a>
+                <p>Удалить</p>
             </div>
         </div>
     

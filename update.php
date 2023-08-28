@@ -36,47 +36,57 @@
             font-size: 16px;
         }
     </style>
-    <h1>    Добваление товара
-</h1>
-    <form action="" method="post" name="form">
+    <h1>    Update товара </h1>
 
-        <input name="title" type="text" placeholder="названиее" />
-        <br>
-        <!-- Поле ввода почты  -->
-        <input name="descr" type="text" placeholder="описание" />
-        <br>
-        <!-- Поле ввода для темы сообщения -->
-        <input  name="price" type="namber" placeholder="цена" />
-        <br>
-        <input  name="img" type="text" placeholder="картинка" />
-        <br>
-        <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
-        <input type="submit" value="Отправить" />
-    </form>
-</body>
 
 <?php
 //  error_reporting(0);
     include('./db.php');
+
     $title = $_POST ['title'];
     $descr = $_POST ['descr'];
     $price = $_POST ['price'];
     $img = $_POST ['img'];
 
 
-$sql = "INSERT INTO products (title, descr, price, img) values ('$title' ,'$descr', $price, '$img')";
-    
+$sql = "UPDATE products SET `title`='$title',`descr`='$descr',`price`='$price', `img`='$img' WHERE `id`=".$_GET['id']   ;  ;
+
 if ($mysqli->query($sql) === TRUE) {
     echo "inserted successfully";
 } else {
     echo "Error: " . $mysqli->error;
 }
     
+include('db.php');
+$sql = "SELECT * FROM products WHERE id=".$_GET['id'];
+$products = $mysqli->query($sql);
+
+foreach($products as $product){
+?>
+    <form action="" method="post" name="form">
+
+        <input name="title" type="text" placeholder="названиее" value="<?php echo $product['title'] ?>" />
+        <br>
+        <!-- Поле ввода почты  -->
+        <input name="descr" type="text" placeholder="описание" value="<?php echo $product['descr'] ?>" />
+        <br>
+        <!-- Поле ввода для темы сообщения -->
+        <input  name="price" type="namber" placeholder="цена" value="<?php echo $product['price'] ?>" />
+        <br>
+        <input  name="img" type="text" placeholder="картинка" value="<?php echo $product['img'] ?>" />
+        <br>
+        <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
+        <input type="submit" value="Отправить" />
+    </form>
+    
+ <?php }
+?>
     ?>
 
 <?php  
 
 ?>
+</body>
 
 </html>
 

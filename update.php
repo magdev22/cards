@@ -38,6 +38,7 @@
     </style>
     <h1>    Update товара </h1>
 
+    <button><a href="/index.php">home</a></button>
 
 <?php
 //  error_reporting(0);

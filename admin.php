@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <style>
         body {
             /*text-align: center;*/
@@ -38,6 +39,8 @@
     </style>
     <h1>    Добваление товара
 </h1>
+<button><a href="/index.php">home</a></button>
+
     <form action="" method="post" name="form">
 
         <input name="title" type="text" placeholder="названиее" />

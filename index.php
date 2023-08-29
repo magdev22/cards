@@ -88,8 +88,9 @@ foreach($products as $product){
                 <h4><b>Название  <?php echo  $product ['title']?></b></h4>
                 <p>Описание <?php echo $product ['descr']?></p>
                 <p>Цена <?php echo $product ['price']?></p>
-                 <a href="/update.php">Изменить</a>
-                <p>Удалить</p>
+                 <a href="/update.php?id=<?php echo $product ['id']?>">Изменить</a>
+                 <a href="/delete.php?id=<?php echo $product ['id']?>">удалить </a>
+              
             </div>
         </div>
     

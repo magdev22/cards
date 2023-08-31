@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>admin</title>
 </head>
 
 <body>
@@ -42,16 +42,18 @@
 <button><a href="/index.php">home</a></button>
 
     <form action="" method="post" name="form">
-
-        <input name="title" type="text" placeholder="названиее" />
+    
+        <legend> Название</legend>
+        <input name="title" type="text" placeholder="только буквы" required pattern="[A-Za-zА-Яа-яЁё]" min="1" max="30" />
         <br>
         <!-- Поле ввода почты  -->
-        <input name="descr" type="text" placeholder="описание" />
+        <legend> Название</legend>
+        <input name="descr" type="text" placeholder="только буквы" pattern="[A-Za-zА-Яа-яЁё]" min="1" max="110" />
         <br>
         <!-- Поле ввода для темы сообщения -->
-        <input  name="price" type="namber" placeholder="цена" />
+        <input  name="price" type="number" placeholder="только цифры" required pattern="^[ 0-9]+$" min="1" max="200" />
         <br>
-        <input  name="img" type="text" placeholder="картинка" />
+        <input  name="img" type="text" placeholder="ссылка на фото" required />
         <br>
         <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
         <input type="submit" value="Отправить" />

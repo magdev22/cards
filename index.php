@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>home</title>
     <style>
 ul {
     list-style-type: none;
@@ -35,7 +35,8 @@ li a:hover {
    box-sizing: border-box;
 }
 .product-item {
-   width: 300px;
+   width: 250px;
+  
    text-align: center;
    margin: 0 auto;
    border-bottom: 2px solid #F5F5F5;
@@ -58,7 +59,7 @@ li a:hover {
    font-size: 18px;
    font-weight: 400;
    color: #444444;
-   margin: 0 0 10px 0;
+   margin: 0 0 0 0;
 }
 .price {
    font-size: 16px;
@@ -105,6 +106,10 @@ li a:hover {
 flex-direction: row;
 flex wrap :wrap ;
 }
+.img{
+   width:280px;
+   height:350px;
+}
 
     </style>
 </head>
@@ -133,7 +138,7 @@ foreach($products as $product){
 ?>
        
        <div class="product-item">
-  <img src="<?php echo $product["img"] ; ?>">
+  <img class="img" src="<?php echo $product["img"] ; ?>">
   <div class="product-list">
     <h3><?php echo $product["title"] ; ?></h3>
     <h3><?php echo $product["descr"] ; ?></h3>

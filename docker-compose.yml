@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      args:
+        user: cards
+        uid: 1000
+      context: .
+      dockerfile: docker/app.dockerfile
+    image: cards-app
+    container_name: cards-app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html:delegated
+    networks:
+      - cards-net
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: cards-nginx
+    restart: unless-stopped
+    ports:
+      - '${WEB_SERVER_PORT:-8080}:80'
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - cards-net
+
+  db:
+    image: 'mysql:8.0'
+    container_name: cards-db
+    restart: unless-stopped
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - 'cards-mysql:/var/lib/mysql'
+    networks:
+      - cards-net
+
+networks:
+  cards-net:
+    driver: bridge
+
+volumes:
+  cards-mysql:
+    driver: local

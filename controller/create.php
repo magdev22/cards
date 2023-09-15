@@ -1,18 +1,20 @@
 <?php
-//  error_reporting(0);
-//view 'admin.php'
+if(isset($_POST['title']) && !empty($_POST['title'])){
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/model/db.php");
-$title = $_POST['title'];
-$descr = $_POST['descr'];
-$price = $_POST['price'];
-$img = $_POST['img'];
 
+$sql = "INSERT INTO products (title, descr, price, img) VALUES (?, ?, ?, ?)";
+$stmt= $mysqli->prepare($sql);
 
-$sql = "INSERT INTO products (title, descr, price, img) values ('$title' ,'$descr', $price, '$img')";
+$parameters =[
+$_POST["title"],
+$_POST["descr"],
+$_POST["price"],
+$_POST["img"],
+];
 
-if ($mysqli->query($sql) === TRUE) {
-    echo "таблица добавлена";
-} else {
-    echo "Error: " . $mysqli->error;
+$stmt->bind_param("ssis", ...$parameters);
+$stmt->execute();
+echo "строка добавлена";
+
 }

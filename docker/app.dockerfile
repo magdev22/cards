@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install gd zip sockets mysqli ldap exif
+RUN docker-php-ext-install gd zip sockets mysqli pdo_mysql ldap exif
 
 # Clean up
 RUN apt-get clean \

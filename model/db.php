@@ -1,8 +1,7 @@
 <?php 
- error_reporting(0);
 
 $mysqli = new Mysqli();
-$mysqli->connect("localhost","root","", "cards");
+$mysqli->connect("db","cards","cards", "cards");
 
 
 if ($mysqli->connect_error) {

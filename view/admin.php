@@ -12,7 +12,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/controller/create.php"); ?>
     <form action="" method="post" name="form">
 
         <legend> Название</legend>
-        <input class="input" name="title" type="text" placeholder="только буквы" pattern="/^\s*[a-z0-9-а-яё]+(?:\s+[a-z0-9-а-яё]+){1,2}\s*$/i" min="1" max="250" required />
+        <input class="input" name="title" type="text"
+         placeholder="только буквы" pattern="/^\s*[a-z0-9-а-яё]+(?:\s+[a-z0-9-а-яё]+){1,2}\s*$/i"
+          min="1" max="250" required />
         <br>
         <!-- Поле ввода почты  -->
         <input class="input" name="descr" type="text" placeholder="только буквы" pattern="^[а-яА-ЯёЁa-zA-Z0-9]+$" min="1" max="110" />
@@ -25,6 +27,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/controller/create.php"); ?>
         <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
         <input type="submit" value="Отправить" />
     </form>
+    
 </center>
 <style>
     .floating-button {

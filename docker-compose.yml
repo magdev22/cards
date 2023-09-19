@@ -27,7 +27,7 @@ services:
     ports:
       - '${WEB_SERVER_PORT:-8080}:80'
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html/app
       - ./docker/nginx:/etc/nginx/conf.d
     networks:
       - cards-net
@@ -50,20 +50,20 @@ services:
       - cards-net
 
   phpmyadmin:
-    image: phpmyadmin:latest 
+    image: phpmyadmin:latest
     container_name: tools_php-phpmyadmin
     restart: unless-stopped
     environment:
       - PMA_ARBITRARY=1
       - UPLOAD_LIMIT=1024M
       - MEMORY_LIMIT=1024M
-      - MAX_EXECUTION_TIME=300  
+      - MAX_EXECUTION_TIME=300
     ports:
       - 8000:80
     depends_on:
-      - db 
+      - db
     networks:
-      - cards-net   
+      - cards-net
 
 networks:
   cards-net:

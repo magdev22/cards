@@ -1,5 +1,5 @@
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/model/db.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/model/ConnectDb.php");
 
 $sql = "CREATE TABLE products(
   id INT  PRIMARY KEY AUTO_INCREMENT,

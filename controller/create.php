@@ -1,10 +1,17 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php");
+
+use Model\ConnectDb;
+
 if(isset($_POST['title']) && !empty($_POST['title'])){
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/model/db.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/model/ConnectDb.php");
+
+$connect = (new ConnectDb)->getConnection();
 
 $sql = "INSERT INTO products (title, descr, price, img) VALUES (?, ?, ?, ?)";
-$stmt= $mysqli->prepare($sql);
+
+$stmt= $connect->prepare($sql);
 
 $parameters =[
 $_POST["title"],

@@ -1,8 +1,6 @@
 <?php
-//view 'home.php'
+require_once($_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php");
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/model/db.php");
+use Model\ConnectDb;
 
-
-$products = $mysqli->query("SELECT * FROM products");
-
+$products =(new ConnectDb)->getConnection()->query("SELECT * FROM products");

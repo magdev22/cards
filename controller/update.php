@@ -3,7 +3,7 @@
 //view 'update.php'
 
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/model/db.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/model/ConnectDb.php");
 $title = $_POST['title'];
 $descr = $_POST['descr'];
 $price = $_POST['price'];
@@ -18,6 +18,6 @@ if ($mysqli->query($sql) === TRUE) {
     echo "Error: " . $mysqli->error;
 }
 
-include('db.php');
+include('ConnectDb.php');
 $sql = "SELECT * FROM products WHERE id=" . $_GET['id'];
 $products = $mysqli->query($sql);
